@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: cktk-sample-pod
+  labels: 
+    app: cktk-get-ip-app
+spec:
+  containers:
+    - name:  my-test-container
+      image: chikutakureiwa2020/my-test:v2
+      ports:
+      - containerPort: 8081
+

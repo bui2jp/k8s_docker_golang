@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: sample-cronjob
+spec:
+  schedule: "* * * * *"
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: 10
+  successfulJobsHistoryLimit: 5
+  failedJobsHistoryLimit: 5
+
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: post2slack-container
+            image: chikutakureiwa2020/post2slack:v1
+          restartPolicy: Never
+          imagePullSecrets:
+          - name: regcred  

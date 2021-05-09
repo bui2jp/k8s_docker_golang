@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: cktk-sample-deploy
+spec:
+  replicas: 4 
+  selector:
+    matchLabels:
+      app: cktk-get-ip-app2 
+  template:
+    metadata:
+      labels:
+        app: cktk-get-ip-app2
+    spec:
+      containers:
+        - name:  my-test-container
+          image: chikutakureiwa2020/my-test:v2
+          ports:
+            - containerPort: 8080

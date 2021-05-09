@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet 
+metadata:
+  name: cktk-sample-rs
+spec:
+  replicas: 50
+  selector:
+    matchLabels:
+      app: cktk-get-ip-app1 
+  template:
+    metadata:
+      labels:
+        app: cktk-get-ip-app1
+    spec:
+      containers:
+        - name:  my-test-container
+          image: chikutakureiwa2020/my-test:v2
+          ports:
+            - containerPort: 8081
